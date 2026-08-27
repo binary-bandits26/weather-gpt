@@ -1,5 +1,5 @@
 import {groqModel} from "./llmProvider.js"
-import { systemPrompt } from "../promptTemplates/latLongPrompt.js"
+import { systemPrompt, userQuery } from "../promptTemplates/latLongPrompt.js"
 
 export async function locationProvider(userQuery){
     const ans = await groqModel(userQuery, systemPrompt, 0.1) 
@@ -9,3 +9,6 @@ export async function locationProvider(userQuery){
     return {lat, long}
 }
 
+
+const result = await locationProvider(userQuery)
+console.log(result)

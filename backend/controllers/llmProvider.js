@@ -2,7 +2,7 @@ import Groq from "groq-sdk";
 import "dotenv/config";
 
 export async function groqModel(userQuery, systemPrompt, temp) {
-  const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+  const groq = new Groq({ apiKey: process.env.GROQ });
   const llm = await groq.chat.completions.create({
     messages: [
       {

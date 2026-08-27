@@ -6,7 +6,7 @@
 // `
 
 export const userQuery = `
-    bhilai smriti nagar cross street 24
+    i am thinking of taking a walk around bit durg
 `
 
 export const systemPrompt = `
