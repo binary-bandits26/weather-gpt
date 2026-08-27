@@ -1,7 +1,7 @@
 import Groq from "groq-sdk";
 import "dotenv/config";
 
-export async function groqModel(userQuery, systemPrompt) {
+export async function groqModel(userQuery, systemPrompt, temp) {
   const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
   const llm = await groq.chat.completions.create({
     messages: [
@@ -12,7 +12,7 @@ export async function groqModel(userQuery, systemPrompt) {
       { role: "user", content: userQuery },
     ],
     model: "openai/gpt-oss-120b",
-    temperature: 0.2,
+    temperature: temp,
     top_p: 0.5,
   });
 

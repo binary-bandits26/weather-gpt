@@ -1,6 +1,6 @@
 import express from "express";
-import { groqModel } from "./controllers/llmProvider.js/index.js";
-import { systemPrompt, userQuery } from "./promptTemplate.js";
+import { groqModel } from "./controllers/llmProvider.js";
+import { systemPrompt, userQuery } from "./promptTemplates/latLongPrompt.js";
 
 const app = express();
 
