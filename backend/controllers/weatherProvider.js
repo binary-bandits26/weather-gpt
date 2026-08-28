@@ -1,4 +1,4 @@
-import { locationProvider } from "./locationProvider.js";
+// import { locationProvider } from "./locationProvider.js";
 
 export async function weatherProvider(lat, long) {
   const apiKey = process.env.OW_API_KEY;
