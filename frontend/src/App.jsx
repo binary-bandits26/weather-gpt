@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router'
 import './App.css'
+import Landing from './pages/landing'
+import Chat from './pages/chat'
+import Dashboard from './pages/dashboard'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <h1>weatherGPT</h1>
-    </>
+    <Routes>
+      <Route path='/' element={<Landing />} />
+      <Route path='/chat' element={<Chat />} />
+      <Route path='/dashboard' element={<Dashboard />} />
+    </Routes>
   )
 }
 
