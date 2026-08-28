@@ -1,27 +1,11 @@
-import { useState } from "react";
 import NavBar from "../components/navBar.jsx";
 import InputBox from "../components/inputBox.jsx";
 import Button from "../components/button.jsx";
 import ChatCard from "../components/chatCard.jsx";
+import useChat from "../hooks/useChat.js";
 
 function Chat() {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-
-  const handleSend = () => {
-    if (!input.trim()) return;
-
-    const userMessage = { message: input, role: "user" };
-    setMessages((prev) => [...prev, userMessage]);
-
-    setInput("");
-
-    const aiMessage = {
-      message: "This is a placeholder AI response.",
-      role: "ai",
-    };
-    setMessages((prev) => [...prev, aiMessage]);
-  };
+  const { messages, input, setInput, loading, sendMessage } = useChat();
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
@@ -39,7 +23,10 @@ function Chat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <Button text="Send" onClick={handleSend} />
+          <Button
+            text={loading ? "..." : "Send"}
+            onClick={() => sendMessage(input)}
+          />
         </div>
       </div>
     </div>
