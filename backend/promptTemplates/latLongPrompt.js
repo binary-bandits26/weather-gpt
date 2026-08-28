@@ -5,9 +5,6 @@
 //     if asked about future you response about that paticular place which user is asking 
 // `
 
-export const userQuery = `
-    i am thinking of taking a walk around bit durg
-`
 
 export const systemPrompt = `
     your job is to give only latitude and longitude without any other work

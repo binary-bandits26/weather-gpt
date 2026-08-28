@@ -1,5 +1,4 @@
 import { locationProvider } from "./locationProvider.js";
-import { userQuery } from "../promptTemplates/latLongPrompt.js";
 
 export async function weatherProvider(lat, long) {
   const apiKey = process.env.OW_API_KEY;
@@ -13,6 +12,6 @@ export async function weatherProvider(lat, long) {
 
 
 
-const lat = await locationProvider(userQuery);
-export const weatherReport = await weatherProvider(lat.lat, lat.long);
-// console.log(result);
+// const lat = await locationProvider();
+// export const weatherReport = await weatherProvider(lat.lat, lat.long);
+// // console.log(result);
