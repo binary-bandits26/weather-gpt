@@ -16,7 +16,7 @@ router.post("/chat", async (req, res) => {
 //   }
   try {
   const llmRes = await responseProvider(userQuery)
-  return res.json({ai: llmRes})
+  return res.json({ai: llmRes.aiResponse, report: llmRes.weatherReport})
   } catch (error) {
     throw new Error(error)  
   }

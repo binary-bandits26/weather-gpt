@@ -3,18 +3,12 @@ import { groqModel } from "./llmProvider.js";
 import { locationProvider } from "./locationProvider.js";
 import { weatherProvider } from "./weatherProvider.js";
 
-function cordinatesFn(ans){
-  ans.split(" ")
-  const lat = ans[0]
-  const long = ans[1]
-  return {lat,long} 
-}
 
 export async function responseProvider(userQuery) {
-    const cordinates = await locationProvider(userQuery)
-    const numCordinates = cordinatesFn(cordinates)
+    const {lat, long}= await locationProvider(userQuery)
 
-  const weatherReport = await weatherProvider(numCordinates.lat, numCordinates.long)
+  const weatherReport = await weatherProvider(lat, long)
+  
 
   const userPormpt = `
     ## json format weather report
@@ -34,7 +28,7 @@ export async function responseProvider(userQuery) {
   
 
   const aiResponse = await groqModel(userPormpt, responsePrompt, 0.6);
-  return aiResponse;
+  return {aiResponse, weatherReport};
 }
 
 
