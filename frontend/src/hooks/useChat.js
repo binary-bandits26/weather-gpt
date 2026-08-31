@@ -1,13 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
+const STORAGE_KEY = "chatMessages";
+
+function loadMessages() {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
 function useChat() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(loadMessages);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendMessage = async (text) => {
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    } catch {
+      // ignore persistence errors
+    }
+  }, [messages]);
+
+  const sendMessage = useCallback(async (text) => {
     if (!text.trim()) return;
 
     setMessages((prev) => [...prev, { message: text, role: "user" }]);
@@ -30,7 +49,7 @@ function useChat() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   return { messages, input, setInput, loading, error, sendMessage };
 }

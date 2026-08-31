@@ -10,6 +10,13 @@ export const responsePrompt = `
     5. don't give a static response only
     6. feel free to give creative response
     7. response in a simple manner and simple language
+    8. also give the most important part of the dada with number
+        8.1 if temp is very high then give data of temp implicitly  
+    9. use simple words
+    10. also give some metrics which is most important if needed
+        like temp: 45, rain: 89
+    11. don't use phrase like -
+        A light west southwest breeze blows
 
     ## bad response
     The weather at the given coordinates is about 25 °C (77°F) with broken
@@ -27,4 +34,7 @@ export const responsePrompt = `
 
     ## good response
     not a good time to do this, you should wait a little and see if weather gets any better
+
+
+
 `;
