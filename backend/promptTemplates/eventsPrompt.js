@@ -17,6 +17,7 @@ export const eventSystemPrompt = `
     - both do's and dont's should have have contain any hashtag
     - output format -> do's # dont's
     - don't give output as written in example they are only their to guide you not the actual output
+    - no answer should be more than 6 to 8 words for each
 
     ## example 1
     - weather-report tells weather is cloud
